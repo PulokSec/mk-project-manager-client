@@ -2,7 +2,7 @@
 
 An project tracking service system where admin can create account and maintain projects and talk to users through chat system. User can create projects and see the project development and communicate directly through chat with admins.
 
-### Live site to the website: [MK=project-manager Live Site](https://mk-projects-manage.firebaseapp.com)
+### Live site to the website: [MK-project-manager Live Site](https://mk-projects-manage.firebaseapp.com)
 
 ## Authentication System
 * User and Admin can create individual user and admin account
