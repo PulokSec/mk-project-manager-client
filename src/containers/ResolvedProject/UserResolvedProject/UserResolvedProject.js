@@ -34,7 +34,7 @@ const UserResolvedProject = () => {
             </div>
           </div>
           {finishedProject.length ? (
-            finishedProject.map((project) => (
+            finishedProject?.map((project) => (
               <UserResolvedCard project={project}></UserResolvedCard>
             ))
           ) : (

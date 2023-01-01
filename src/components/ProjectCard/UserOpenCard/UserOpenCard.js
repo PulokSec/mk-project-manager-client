@@ -20,7 +20,7 @@ const UserOpenCard = (props) => {
 			body: JSON.stringify({ email: user.email })
 		});
 		const response = await res.json();
-		const result = response.appliedProject?.find((id)=> id === _id);
+		const result = response?.appliedProject?.find((id)=> id === _id);
 		console.log(result);
 		if(result !== undefined){
 			setStatus("Joined");
@@ -117,7 +117,7 @@ const UserOpenCard = (props) => {
 							<div className='flex flex-row lg:justify-start justify-center'>
 								<div className='w-full text-gray-700 font-medium text-sm text-center lg:text-left px-2 flex justify-between mt-2'>
 									<i className='far fa-clock text-brand-12'>Joined: </i>
-									{joined.map((employee)=>
+									{joined?.map((employee)=>
 										<i className='far fa-clock text-brand-7'>{employee.name}</i>
 									)}
 								</div>

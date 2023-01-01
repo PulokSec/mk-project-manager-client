@@ -36,7 +36,7 @@ const UserActiveProject = () => {
             </div>
           </div>
           {activeProject.length ? (
-            activeProject.map((project) => (
+            activeProject?.map((project) => (
               <UserActiveCard project={project}></UserActiveCard>
             ))
           ) : (

@@ -31,7 +31,7 @@ const AdminResolvedProject = () => {
 						</div>
 					</div>
 					{finishedProject.length ? (
-						finishedProject.map((project) => <ResolvedCard project={project}></ResolvedCard>)
+						finishedProject?.map((project) => <ResolvedCard project={project}></ResolvedCard>)
 					) : (
 						<div>
 							<h1 className=' text-center text-3xl text-brand-1 opacity-50 uppercase pt-10  font-semibold '>

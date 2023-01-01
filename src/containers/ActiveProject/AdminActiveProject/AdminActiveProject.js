@@ -31,7 +31,7 @@ const AdminActiveProject = () => {
             </div>
           </div>
           {activeProject.length ? (
-            activeProject.map((project) => (
+            activeProject?.map((project) => (
               <ActiveCard project={project}></ActiveCard>
             ))
           ) : (

@@ -34,7 +34,7 @@ const AdminOpenProject = () => {
 						</div>
 					</div>
 					{openProject.length ? (
-						openProject.map((project) => <OpenCard project={project}></OpenCard>)
+						openProject?.map((project) => <OpenCard project={project}></OpenCard>)
 					) : (
 						<div>
 							<h1 className=' text-center text-3xl text-brand-1 opacity-50 uppercase pt-10  font-semibold '>

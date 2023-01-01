@@ -15,7 +15,7 @@ const UserOpenProject = () => {
 	}, []);
 
 	const allProject = useSelector((state) => state.project.allProject);
-	const openProjects = allProject.filter((project) => project.status === 'open');
+	const openProjects = allProject?.filter((project) => project.status === 'open');
 	
 	
 	return (
@@ -33,7 +33,7 @@ const UserOpenProject = () => {
 						</div>
 					</div>
 					{openProjects.length ? (
-						openProjects.map((project) => <UserOpenCard project={project}></UserOpenCard>)
+						openProjects?.map((project) => <UserOpenCard project={project}></UserOpenCard>)
 					) : (
 						<div>
 							<h1 className=' text-center text-3xl text-brand-1 opacity-50 uppercase pt-10  font-semibold '>
