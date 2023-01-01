@@ -18,7 +18,7 @@ const OpenCard = (props) => {
 
   const handleStatus = () => {
     if (joined.length > 0) {
-      fetch(`https://mk-project-manager.herokuapp.com/start/${_id}`, {
+      fetch(`https://mk-manager.onrender.com/start/${_id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

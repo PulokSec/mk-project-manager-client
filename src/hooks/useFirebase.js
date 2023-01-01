@@ -52,7 +52,7 @@ const useFirebase = () => {
 
 	// const saveUser = (email, displayName, photoURL, admin = "", method) => {
 	// 	const user = { email, displayName, photoURL, role: admin };
-	// 	fetch("https://mk-project-manager.herokuapp.com/users", {
+	// 	fetch("https://mk-manager.onrender.com/users", {
 	// 		method: method,
 	// 		headers: {
 	// 			"content-type": "application/json",
@@ -62,7 +62,7 @@ const useFirebase = () => {
 	// };
 
 	useEffect(() => {
-		fetch(`https://mk-project-manager.herokuapp.com/users/${user?.email}`)
+		fetch(`https://mk-manager.onrender.com/users/${user?.email}`)
 			.then((res) => res.json())
 			.then((data) => {
 				dispatch(setAdmin(data.admin));

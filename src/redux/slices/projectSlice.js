@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const adminProject = createAsyncThunk("project/adminProject", async (data) => {
 	try {
-		const res = await fetch("https://mk-project-manager.herokuapp.com/admin/byemail", {
+		const res = await fetch("https://mk-manager.onrender.com/admin/byemail", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -15,7 +15,7 @@ export const adminProject = createAsyncThunk("project/adminProject", async (data
 });
 export const allProjects = createAsyncThunk("project/allProjects", async () => {
 	try {
-		const res = await fetch(`https://mk-project-manager.herokuapp.com/projects`);
+		const res = await fetch(`https://mk-manager.onrender.com/projects`);
 		const response = await res.json();
 		return response;
 	} catch (err) {}
@@ -95,7 +95,7 @@ export default projectSlice.reducer;
 
 export const userProject = async (data) => {
 	try {
-		const res = await fetch(`https://mk-project-manager.herokuapp.com/user/byemail`,{
+		const res = await fetch(`https://mk-manager.onrender.com/user/byemail`,{
 			method: "POST",
 			headers: {
 				"content-type": "application/json",

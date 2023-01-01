@@ -18,7 +18,7 @@ const ResolvedCard = (props) => {
 
   const handleDelete = () => {
     if (window.confirm("Are you Sure?")) {
-      fetch(`https://mk-project-manager.herokuapp.com/project/${_id}`, {
+      fetch(`https://mk-manager.onrender.com/project/${_id}`, {
         method: "DELETE",
       })
         .then((res) => res.text()) // or res.json()

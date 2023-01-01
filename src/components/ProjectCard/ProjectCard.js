@@ -6,7 +6,7 @@ const ProjectCard = (props) => {
 	const { date, time, title, description, _id, photoURL, userEmail, displayName } = props.project;
 
 	const handleStatus = () => {
-		fetch(`https://mk-project-manager.herokuapp.com/status/${_id}`, {
+		fetch(`https://mk-manager.onrender.com/status/${_id}`, {
 			method: "PUT",
 			headers: {
 				"content-type": "application/json",

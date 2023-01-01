@@ -20,7 +20,7 @@ const AddProject = () => {
 		data.status = "open";
 		data.joined = [];
 
-		fetch("https://mk-project-manager.herokuapp.com/project", {
+		fetch("https://mk-manager.onrender.com/project", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",

@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const saveUser = createAsyncThunk("data/saveUser", async (data) => {
 
 	try {
-		const res = await fetch("https://mk-project-manager.herokuapp.com/users", {
+		const res = await fetch("https://mk-manager.onrender.com/users", {
 			method: data.method,
 			headers: {
 				"content-type": "application/json",

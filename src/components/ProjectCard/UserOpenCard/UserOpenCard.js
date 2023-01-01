@@ -12,7 +12,7 @@ const UserOpenCard = (props) => {
 	
 	const oldUser = async () => {
 		try {
-			const res = await fetch(`https://mk-project-manager.herokuapp.com/existing/byemail`,{
+			const res = await fetch(`https://mk-manager.onrender.com/existing/byemail`,{
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -43,7 +43,7 @@ const UserOpenCard = (props) => {
 			alert("Already Joined!!!")
 		}
 		else if(joined.length < 3){
-			fetch(`https://mk-project-manager.herokuapp.com/join/${_id}`, {
+			fetch(`https://mk-manager.onrender.com/join/${_id}`, {
 				method: "PUT",
 				headers: {
 					"content-type": "application/json",
