@@ -16,7 +16,7 @@ const UserOpenProject = () => {
 
 	const allProject = useSelector((state) => state.project.allProject);
 	const openProjects = allProject?.filter((project) => project.status === 'open');
-	
+	console.log(openProjects);
 	
 	return (
 		<div className='flex flex-col md:flex-row'>

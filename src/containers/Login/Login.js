@@ -7,6 +7,7 @@ import { MdClose } from "react-icons/md";
 import useFirebase from "../../hooks/useFirebase";
 import {
   saveUser,
+  setAdmin,
   setError,
   setIsLoading,
   setUser,
@@ -50,8 +51,17 @@ const Login = () => {
 
   const onSubmit = (data) => {
     processLogin(data.email, data.password)
-      .then((res) => {
-        dispatch(setUser(res.user));
+      .then(async (res) => {
+        const result = await fetch(`https://mk-manager.onrender.com/existing/byemail`,{
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify({ email: data.email })
+		});
+		const response = await result.json();
+        dispatch(setUser(response));
+        if(response.role === "admin") dispatch(setAdmin(true));
         dispatch(setError(""));
         navigate(redirect_uri);
       })

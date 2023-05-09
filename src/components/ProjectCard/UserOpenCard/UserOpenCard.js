@@ -8,7 +8,7 @@ const UserOpenCard = (props) => {
 	const { date, time, title, description, _id, joined, photoURL, userEmail, displayName } = props.project;
 	const [status, setStatus] = useState("Join");
 	const user = useSelector((state) => state.data.user);
-
+console.log(joined);
 	
 	const oldUser = async () => {
 		try {
@@ -21,7 +21,7 @@ const UserOpenCard = (props) => {
 		});
 		const response = await res.json();
 		const result = response?.appliedProject?.find((id)=> id === _id);
-		console.log(result);
+		console.log(result,response);
 		if(result !== undefined){
 			setStatus("Joined");
 		}
@@ -42,7 +42,7 @@ const UserOpenCard = (props) => {
 		if(status === 'Joined'){
 			alert("Already Joined!!!")
 		}
-		else if(joined.length < 3){
+		else if(joined?.length < 3){
 			fetch(`https://mk-manager.onrender.com/join/${_id}`, {
 				method: "PUT",
 				headers: {
@@ -118,7 +118,7 @@ const UserOpenCard = (props) => {
 								<div className='w-full text-gray-700 font-medium text-sm text-center lg:text-left px-2 flex justify-between mt-2'>
 									<i className='far fa-clock text-brand-12'>Joined: </i>
 									{joined?.map((employee)=>
-										<i className='far fa-clock text-brand-7'>{employee.name}</i>
+										<i className='far fa-clock text-brand-7'>{employee?.name || employee?.email}</i>
 									)}
 								</div>
 							</div>

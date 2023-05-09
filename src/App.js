@@ -18,7 +18,7 @@ import AdminResolvedProject from "./containers/ResolvedProject/AdminResolvedProj
 import UserResolvedProject from "./containers/ResolvedProject/UserResolvedProject/UserResolvedProject";
 
 function App() {
-	const admin = useSelector((state) => state.data.admin);
+	const admin = useSelector((state) => state.data?.user?.role === "admin");
 	return (
 		<div>
 			<Router>

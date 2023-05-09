@@ -27,7 +27,7 @@ const NavLink = React.forwardRef(({ activeClassName, activeStyle, ...props }, re
 const Navbar = () => {
 	const { logOut } = useFirebase();
 	const user = useSelector((state) => state.data.user);
-	const admin = useSelector((state) => state.data.admin);
+	const admin = useSelector((state) => state.data.user?.role === "admin");
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
@@ -43,7 +43,7 @@ const Navbar = () => {
 							<div className='flex items-end justify-center'>
 								<div>
 									{/* <!-- Header Icons --> */}
-									{user.displayName ? (
+									{(user?.displayName || user?.name) ? (
 										<div className=' hidden md:flex items-center justify-center mb-5'>
 											<div className='h-24 mb-5'>
 												<Link to='/mytours'>
@@ -52,9 +52,10 @@ const Navbar = () => {
 															<BiUser className='text-white text-xl h-5 w-5' />
 														</div>
 														<p className='font-semibold text-white  py-1 transition duration-300 ease-in-out text-left pl-1 mt-4'>
-															{user.displayName.toUpperCase().length > 12
-																? user.displayName.split(" ")[0].toUpperCase()
-																: user.displayName.toUpperCase()}
+															{user?.displayName ? (user?.displayName?.toUpperCase()?.length > 12
+																? user.displayName?.split(" ")[0].toUpperCase()
+																: user?.displayName) : (user?.name?.toUpperCase()?.length > 12 ? user.name?.toUpperCase().split(" ")[0] : user.name?.toUpperCase()) }
+																
 														</p>
 													</div>
 												</Link>
@@ -83,7 +84,7 @@ const Navbar = () => {
 										</div>
 									)}
 									<div className='hidden md:flex flex-col md:w-80 xl:w-96 uppercase text-sm lg:text-base text-center'></div>
-									{user.displayName && (
+									{(user?.displayName || user?.name) && (
 										<div>
 											{admin ? (
 												<div className='hidden md:flex flex-col md:w-80 xl:w-96 uppercase text-sm lg:text-base text-center'>
@@ -270,9 +271,9 @@ const Navbar = () => {
 						{(ref) => (
 							<div className='md:hidden ' id='mobile-menu'>
 								<div ref={ref} className=' pt-2   text-center mx-auto bg-brand-1'>
-									{user.displayName ? (
+									{(user?.displayName || user?.name) ? (
 										<div className='pt-2   text-center mx-auto bg-brand-1'>
-											{!admin ? (
+											{admin ? (
 												<div className='flex items-center flex-col'>
 													<NavLink
 														to='/user/add-project'

@@ -61,19 +61,29 @@ const useFirebase = () => {
 	// 	}).then();
 	// };
 
-	useEffect(() => {
-		fetch(`https://mk-manager.onrender.com/users/${user?.email}`)
-			.then((res) => res.json())
-			.then((data) => {
-				dispatch(setAdmin(data.admin));
-			});
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [user?.email]);
+	// useEffect(() => {
+	// 	fetch(`https://mk-manager.onrender.com/users/${user?.email}`)
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			console.log(data);
+	// 			dispatch(setAdmin(data.admin));
+	// 		});
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [user?.email]);
 
 	useEffect(() => {
-		onAuthStateChanged(auth, (user) => {
+		onAuthStateChanged(auth, async (user) => {
 			if (user) {
-				dispatch(setUser(user));
+				const res = await fetch(`https://mk-manager.onrender.com/existing/byemail`,{
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify({ email: user.email })
+		});
+		const response = await res.json();
+				dispatch(setUser(response));
+				if(response.role === "admin") dispatch(setAdmin(true));
 				getIdToken(user).then((idToken) => {
 					dispatch(setToken(idToken));
 				});
